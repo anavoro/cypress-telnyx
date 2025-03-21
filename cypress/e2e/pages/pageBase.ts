@@ -1,4 +1,4 @@
-class BasePage {
+class PageBase {
   visit(path: string = "") {
     cy.visit(path);
     return this;
@@ -23,4 +23,4 @@ class BasePage {
   }
 }
 
-export default BasePage;
+export default PageBase;

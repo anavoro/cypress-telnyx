@@ -12,6 +12,7 @@ class HomePage {
   static handleCookieBanner() {
     cy.get("button#cookiescript_close").should("be.visible").click();
   }
+
   verifyMainNavigation() {
     const menuItems = {
       products: "Products",
@@ -49,7 +50,14 @@ class HomePage {
     return this;
   }
   verifyTopNavigationMenu() {
-    const navItems = {
+    const mobileNavSelectors = {
+      seti: '#main-menu > [href="https://seti.telnyx.com"]',
+      shop: '#main-menu > [href="https://shop.telnyx.com"]',
+      contactUs: '#main-menu > [href="/contact-us"]',
+      logIn: '#main-menu > [href="https://portal.telnyx.com"]',
+    };
+
+    const desktopNavItems = {
       seti: "SETI",
       shop: "Shop",
       contactUs: "Contact us",
@@ -60,10 +68,8 @@ class HomePage {
       const width = win.innerWidth;
 
       if (width >= 992) {
-        cy.get("body").then(() => {
-          Object.values(navItems).forEach((item) => {
-            cy.contains("a, button, span", item).should("exist");
-          });
+        Object.values(desktopNavItems).forEach((item) => {
+          cy.contains("a, button, span", item).should("exist");
         });
       } else {
         cy.get(
@@ -73,29 +79,14 @@ class HomePage {
           .first()
           .click();
 
-        cy.document().then(() => {
-          const checkForCookieBanner = () => {
-            cy.get("body").then(($body) => {
-              if ($body.find(".cookie-banner-selector").length > 0) {
-                HomePage.handleCookieBanner();
-              }
-            });
-          };
+        cy.get("#main-menu", { timeout: 5000 }).should("be.visible");
 
-          checkForCookieBanner();
-
-          cy.get("div.c-hhiuJL", { timeout: 5000 })
-            .should("be.visible")
-            .and("have.css", "display", "block");
-
-          checkForCookieBanner();
-
-          Object.values(navItems).forEach((item) => {
-            cy.contains("a, button, span", item).should("be.visible");
-          });
+        Object.entries(mobileNavSelectors).forEach(([, selector]) => {
+          cy.get(selector).should("be.visible");
         });
       }
     });
+
     return this;
   }
 

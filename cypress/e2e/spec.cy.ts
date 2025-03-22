@@ -36,6 +36,10 @@ describe("Telnyx Homepage Tests", () => {
     it("verify footer desktop", () => {
       homePageDesktop.visitHomePage().verifyFooter();
     });
+
+    it("should check the contact us form", () => {
+      homePageDesktop.visitHomePage().verifyContactUs();
+    });
   });
 });
 

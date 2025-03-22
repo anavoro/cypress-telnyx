@@ -90,6 +90,17 @@ abstract class HomePageBase extends PageBase {
     return this;
   }
 
+  verifyChatbot() {
+    cy.get("div.c-bGYNvC > svg").click();
+    cy.get("div.c-bCIlIy").should("be.visible");
+    cy.get("textarea.c-fJsHXZ").type("Hello, Telnyx!");
+    cy.contains("button", "Send message").click();
+    cy.contains("div.c-bCIlIy", "Hello, Telnyx!").should("be.visible");
+    cy.get('button[data-state="open"].c-cODSYQ').click();
+    cy.get("div.c-bCIlIy").should("not.exist");
+    return this;
+  }
+
   abstract getViewName(): string;
   abstract verifyMainNavigation(): void;
   abstract verifyTopNavigationMenu(): void;

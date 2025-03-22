@@ -50,7 +50,9 @@ describe("Telnyx Homepage Tests", () => {
     homePageDesktop.visitHomePage().verifyMainBodySignUp();
   });
 
-  it("should verify Chatbot functionality", () => {});
+  it("should verify Chatbot functionality", () => {
+    homePageDesktop.visitHomePage().verifyChatbot();
+  });
 });
 
 function expect(domComplete: any) {

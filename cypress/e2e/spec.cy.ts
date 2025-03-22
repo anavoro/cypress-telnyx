@@ -1,53 +1,44 @@
-import HomePage from "./pages/homePage";
+import HomePageBase from "./pages/homePageBase";
 import HomePageDesktop from "./pages/homePageDesktop";
 import HomePageMobile from "./pages/homePageMobile";
 
 describe("Telnyx Homepage Tests", () => {
-  const homePageOld = new HomePage();
+  it("should load the homepage and check the title", () => {
+    homePageDesktop
+      .visitHomePage()
+      .verifyHomepageLoaded()
+      .verifyPageTitle()
+      .verifyPerformance();
+  });
+
   const homePageMobile = new HomePageMobile();
   const homePageDesktop = new HomePageDesktop();
+  const viewportConfigs = [
+    { page: new HomePageMobile(), width: 375, height: 812 }, // iPhone X dimensions
+    { page: new HomePageDesktop(), width: 1200, height: 800 },
+  ];
 
-  [homePageMobile, homePageDesktop].forEach((homePage) => {
-    it(`should verify the top navigation elements in ${homePage.getViewName()} view`, () => {
-      homePageOld.visitHomePage().verifyTopNavigationMenu();
+  viewportConfigs.forEach(({ page, width, height }) => {
+    describe(`Navigation Tests in ${page.getViewName()} view`, () => {
+      beforeEach(() => {
+        cy.viewport(width, height);
+      });
+
+      it(`should verify the top navigation elements`, () => {
+        page.visitHomePage().verifyTopNavigationMenu();
+      });
+
+      it(`should verify the main navigation elements`, () => {
+        page.visitHomePage().verifyMainNavigation();
+      });
     });
-  });
 
-  it.only("should load the homepage and check the title", () => {
-    homePageOld.visitHomePage();
-    cy.get("h1").should("be.visible");
-    homePageOld.verifyPageTitle();
-    cy.request("/").then((response) => {
-      cy.wrap(response.duration).should("be.lessThan", 5000);
+    it("verify footer desktop", () => {
+      homePageDesktop.visitHomePage().verifyFooter();
     });
-  });
-
-  it("should verify the top navigation elements", () => {
-    homePageOld.visitHomePage().verifyTopNavigationMenu();
-  });
-
-  it("should verify the main navigation menu", () => {
-    homePageOld.visitHomePage().verifyMainNavigation();
-  });
-
-  it("should verify navigation in mobile view", () => {
-    cy.viewport(375, 667);
-    homePageOld.visitHomePage().verifyMainNavigation();
-  });
-
-  it("should verify top navigation in mobile view", () => {
-    cy.viewport(375, 667);
-    homePageOld.visitHomePage().verifyTopNavigationMenu();
-  });
-
-  it("should validate footer presence", () => {
-    homePageOld.visitHomePage().verifyFooter();
-  });
-
-  it("verify footer mobile", () => {
-    homePageMobile.verifyFooter();
   });
 });
+
 function expect(domComplete: any) {
   throw new Error("Function not implemented.");
 }

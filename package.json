@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "test:ui": "cypress open"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "Telnyx",
+    "Cypress",
+    "E2E",
+    "Testing"
+  ],
+  "author": "Anastasiya Voropayeva, anavoro",
+  "license": "CCO",
+  "description": "Cypress tests for Telnyx (the project for sel-study)",
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "cypress": "^14.2.0",

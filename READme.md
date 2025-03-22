@@ -32,8 +32,8 @@ _Verify that the Telnyx homepage loads without errors and displays correctly._
 **TEL-TC-002 - Verify Footer Presence**  
 _Ensure the footer is visible._
 
-**TEL-TC-003 - Cookie Button Check**  
-_Confirm that the cookie consent button appears and functions as expected._
+**TEL-TC-003 - ChatBot Check**  
+_Confirm that the chatbot is present and functions correctly._
 
 **TEL-TC-004 - Main Navigation Displayed Correctly in Desktop View**  
 _Validate that the main navigation menu appears and functions correctly on desktop devices._

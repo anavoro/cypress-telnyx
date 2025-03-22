@@ -32,15 +32,25 @@ describe("Telnyx Homepage Tests", () => {
         page.visitHomePage().verifyMainNavigation();
       });
     });
-
-    it("verify footer desktop", () => {
-      homePageDesktop.visitHomePage().verifyFooter();
-    });
-
-    it("should check the contact us form", () => {
-      homePageDesktop.visitHomePage().verifyContactUs();
-    });
   });
+
+  it("verify footer desktop", () => {
+    homePageDesktop.visitHomePage().verifyFooter();
+  });
+
+  it("should check the contact us form", () => {
+    homePageDesktop.visitHomePage().verifyContactUs();
+  });
+
+  it('should navigate to the sign-up page upon clicking "Sign up" in the header', () => {
+    homePageDesktop.visitHomePage().verifyHeaderSignUp();
+  });
+
+  it('should navigate to the sign-up page upon clicking "Sign up" in the main body', () => {
+    homePageDesktop.visitHomePage().verifyMainBodySignUp();
+  });
+
+  it("should verify Chatbot functionality", () => {});
 });
 
 function expect(domComplete: any) {

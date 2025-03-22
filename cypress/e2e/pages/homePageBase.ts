@@ -63,6 +63,31 @@ abstract class HomePageBase extends PageBase {
     cy.get("h1.c-PJLV.c-rMlRu.c-hLiKYq")
       .should("be.visible")
       .and("have.text", "Talk to an expert");
+    return this;
+  }
+
+  verifySignUpPage() {
+    cy.url().should("eq", "https://telnyx.com/sign-up");
+    cy.get("h1.c-PJLV.c-rMlRu.c-frvnKx")
+      .should("be.visible")
+      .and("have.text", "Create a Telnyx account");
+    return this;
+  }
+
+  verifyHeaderSignUp() {
+    cy.get('div#main-menu > a.c-bzrwjc > span[data-content="Sign up"]').click({
+      force: true,
+    });
+    this.verifySignUpPage();
+    return this;
+  }
+
+  verifyMainBodySignUp() {
+    cy.get(
+      'div.c-cxTTUp > a[href="/sign-up"] > span[data-content="Sign up"]'
+    ).click();
+    this.verifySignUpPage();
+    return this;
   }
 
   abstract getViewName(): string;

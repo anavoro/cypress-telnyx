@@ -13,10 +13,13 @@ describe("Telnyx Homepage Tests", () => {
     });
   });
 
-  it("should load the homepage and check the title", () => {
+  it.only("should load the homepage and check the title", () => {
     homePageOld.visitHomePage();
     cy.get("h1").should("be.visible");
     homePageOld.verifyPageTitle();
+    cy.request("/").then((response) => {
+      cy.wrap(response.duration).should("be.lessThan", 5000);
+    });
   });
 
   it("should verify the top navigation elements", () => {
@@ -32,7 +35,7 @@ describe("Telnyx Homepage Tests", () => {
     homePageOld.visitHomePage().verifyMainNavigation();
   });
 
-  it.only("should verify top navigation in mobile view", () => {
+  it("should verify top navigation in mobile view", () => {
     cy.viewport(375, 667);
     homePageOld.visitHomePage().verifyTopNavigationMenu();
   });
@@ -45,3 +48,6 @@ describe("Telnyx Homepage Tests", () => {
     homePageMobile.verifyFooter();
   });
 });
+function expect(domComplete: any) {
+  throw new Error("Function not implemented.");
+}

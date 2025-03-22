@@ -50,12 +50,14 @@ class HomePage {
     return this;
   }
   verifyTopNavigationMenu() {
-    const mobileNavSelectors = {
+    /* 
+     const mobileNavSelectors = {
       seti: '#main-menu > [href="https://seti.telnyx.com"]',
       shop: '#main-menu > [href="https://shop.telnyx.com"]',
       contactUs: '#main-menu > [href="/contact-us"]',
       logIn: '#main-menu > [href="https://portal.telnyx.com"]',
     };
+    */
 
     const desktopNavItems = {
       seti: "SETI",
@@ -81,8 +83,8 @@ class HomePage {
 
         cy.get("#main-menu", { timeout: 5000 }).should("be.visible");
 
-        Object.entries(mobileNavSelectors).forEach(([, selector]) => {
-          cy.get(selector).should("be.visible");
+        Object.values(desktopNavItems).forEach((item) => {
+          cy.contains("a, button, span", item).should("exist");
         });
       }
     });

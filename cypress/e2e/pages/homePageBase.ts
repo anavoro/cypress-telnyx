@@ -1,3 +1,4 @@
+import { formatWithOptions } from "util";
 import PageBase from "./pageBase";
 
 abstract class HomePageBase extends PageBase {
@@ -21,8 +22,8 @@ abstract class HomePageBase extends PageBase {
     logIn: "Log in",
   };
 
-  visitHomePage() {
-    cy.visit("/");
+  visitHomePage(options?: Partial<Cypress.VisitOptions>) {
+    cy.visit("/", options);
     return this;
   }
 

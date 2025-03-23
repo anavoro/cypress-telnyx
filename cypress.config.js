@@ -4,12 +4,19 @@ module.exports = defineConfig({
   projectId: 'e153fo',
   e2e: {
     baseUrl: 'https://telnyx.com',
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
+    experimentalStudio: true,
+    reporter: 'cypress-mochawesome-reporter',
+    video: false,
+    reporterOptions: {
+      charts: true,
+      reportPageTitle: 'Cypress Inline Reporter',
+      embeddedScreenshots: true,
+      inlineAssets: true,
     },
-      experimentalStudio:true,
-      setupNodeEvents(on, config) {
-        // implement node event listeners here
+    setupNodeEvents(on, config) {
+      // Register the mochawesome reporter plugin
+      require('cypress-mochawesome-reporter/plugin')(on);
+      // Add any other event listeners here
     },
   },
 });

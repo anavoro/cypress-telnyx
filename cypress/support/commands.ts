@@ -8,6 +8,8 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 import "cypress-real-events";
+
+import 'cypress-mochawesome-reporter/register';
 //
 //
 // -- This is a parent command --

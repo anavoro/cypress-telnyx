@@ -1,0 +1,209 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 5,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-23T19:24:44.048Z",
+    "end": "2025-03-23T19:26:34.014Z",
+    "duration": 109966,
+    "testsRegistered": 6,
+    "passPercent": 83.33333333333334,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "03ca3e08-4d20-46ef-ab3c-1945dad3efd3",
+      "title": "",
+      "fullFile": "cypress/e2e/homepage.cy.ts",
+      "file": "cypress/e2e/homepage.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8728df2b-5430-45ec-bddb-a6c7189b02d2",
+          "title": "Telnyx Homepage Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load the homepage and check the title",
+              "fullTitle": "Telnyx Homepage Tests should load the homepage and check the title",
+              "timedOut": null,
+              "duration": 3672,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "homePageDesktop\n    .visitHomePage({ timeout: 5 * 1000 })\n    .verifyHomepageLoaded()\n    .verifyPageTitle();",
+              "err": {},
+              "uuid": "e5240fd9-df8d-4204-8c48-f049bf76ee1b",
+              "parentUUID": "8728df2b-5430-45ec-bddb-a6c7189b02d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify footer desktop",
+              "fullTitle": "Telnyx Homepage Tests verify footer desktop",
+              "timedOut": null,
+              "duration": 957,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "homePageDesktop.visitHomePage().verifyFooter();",
+              "err": {},
+              "uuid": "5c739b84-3af3-4a15-a710-31ca585e3564",
+              "parentUUID": "8728df2b-5430-45ec-bddb-a6c7189b02d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should check the contact us form",
+              "fullTitle": "Telnyx Homepage Tests should check the contact us form",
+              "timedOut": null,
+              "duration": 6891,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "homePageDesktop.visitHomePage().verifyContactUs();",
+              "err": {},
+              "uuid": "a43f7396-dc20-4a67-a065-9b66d261fa6b",
+              "parentUUID": "8728df2b-5430-45ec-bddb-a6c7189b02d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should navigate to the sign-up page upon clicking \"Sign up\" in the header",
+              "fullTitle": "Telnyx Homepage Tests should navigate to the sign-up page upon clicking \"Sign up\" in the header",
+              "timedOut": null,
+              "duration": 9794,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "homePageDesktop.visitHomePage().verifyHeaderSignUp();",
+              "err": {},
+              "uuid": "8b8c21ab-cb4f-444f-9f00-f4ea3cc1267b",
+              "parentUUID": "8728df2b-5430-45ec-bddb-a6c7189b02d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should navigate to the sign-up page upon clicking \"Sign up\" in the main body",
+              "fullTitle": "Telnyx Homepage Tests should navigate to the sign-up page upon clicking \"Sign up\" in the main body",
+              "timedOut": null,
+              "duration": 4129,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "homePageDesktop.visitHomePage().verifyMainBodySignUp();",
+              "err": {},
+              "uuid": "efa7daea-14b4-4177-97a4-dbd134348552",
+              "parentUUID": "8728df2b-5430-45ec-bddb-a6c7189b02d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify Chatbot functionality",
+              "fullTitle": "Telnyx Homepage Tests should verify Chatbot functionality",
+              "timedOut": null,
+              "duration": 72538,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"/homepage.cy.ts/Telnyx Homepage Tests -- should verify Chatbot functionality (failed).png\"\n    ]\n  ]\n}",
+              "code": "homePageDesktop.visitHomePage().verifyChatbot();",
+              "err": {
+                "message": "CypressError: Timed out retrying after 4050ms: `cy.click()` could not be issued because this element is currently animating:\n\n`<button data-state=\"open\" class=\"c-cODSYQ c-cPtnfT c-cODSYQ-iyfMXp-hasMessages-true\">...</button>`\n\nYou can fix this problem by:\n  - Passing `{force: true}` which disables all error checking\n  - Passing `{waitForAnimations: false}` which disables waiting on animations\n  - Passing `{animationDistanceThreshold: 20}` which decreases the sensitivity\n\nhttps://on.cypress.io/element-is-animating",
+                "estack": "CypressError: Timed out retrying after 4050ms: `cy.click()` could not be issued because this element is currently animating:\n\n`<button data-state=\"open\" class=\"c-cODSYQ c-cPtnfT c-cODSYQ-iyfMXp-hasMessages-true\">...</button>`\n\nYou can fix this problem by:\n  - Passing `{force: true}` which disables all error checking\n  - Passing `{waitForAnimations: false}` which disables waiting on animations\n  - Passing `{animationDistanceThreshold: 20}` which decreases the sensitivity\n\nhttps://on.cypress.io/element-is-animating\n    at ensureElIsNotAnimating (https://telnyx.com/__cypress/runner/cypress_runner.js:112010:66)\n    at ensureNotAnimating (https://telnyx.com/__cypress/runner/cypress_runner.js:112283:3)\n    at runAllChecks (https://telnyx.com/__cypress/runner/cypress_runner.js:112422:9)\n    at retryActionability (https://telnyx.com/__cypress/runner/cypress_runner.js:112466:16)\n    at tryCatcher (https://telnyx.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://telnyx.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://telnyx.com/__cypress/runner/cypress_runner.js:144517:68)\n    at <unknown> (https://telnyx.com/__cypress/runner/cypress_runner.js:144458:14)\n    at tryCatcher (https://telnyx.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://telnyx.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://telnyx.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://telnyx.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://telnyx.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://telnyx.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://telnyx.com/__cypress/runner/cypress_runner.js:5420:46)",
+                "diff": null
+              },
+              "uuid": "32f03bb9-9816-42d0-a759-a824efc81395",
+              "parentUUID": "8728df2b-5430-45ec-bddb-a6c7189b02d2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e5240fd9-df8d-4204-8c48-f049bf76ee1b",
+            "5c739b84-3af3-4a15-a710-31ca585e3564",
+            "a43f7396-dc20-4a67-a065-9b66d261fa6b",
+            "8b8c21ab-cb4f-444f-9f00-f4ea3cc1267b",
+            "efa7daea-14b4-4177-97a4-dbd134348552"
+          ],
+          "failures": [
+            "32f03bb9-9816-42d0-a759-a824efc81395"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 97981,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "Cypress Inline Reporter",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

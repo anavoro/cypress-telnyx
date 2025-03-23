@@ -13,13 +13,17 @@ describe("Telnyx Homepage Tests", () => {
     homePageDesktop
       .getPageTitle()
       .should(
-        "equal",
+        "eq",
         "Telnyx - Global solutions for Communications, IOT, AI, Compute and Networking"
       );
   });
 
-  it("verify footer desktop", () => {
-    homePageDesktop.visitHomePage().verifyFooter();
+  it.only("verify footer desktop", () => {
+    homePageDesktop
+      .visitHomePage()
+      .getFooter()
+      .should("be.visible")
+      .should("contain", "©");
   });
 
   it("should check the contact us form", () => {

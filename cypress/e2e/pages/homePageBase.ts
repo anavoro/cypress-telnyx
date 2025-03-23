@@ -50,10 +50,8 @@ abstract class HomePageBase extends PageBase {
     return this.topNavigationItems;
   }
 
-  verifyFooter() {
-    cy.get("footer").should("be.visible");
-    cy.get("footer").contains("©");
-    return this;
+  getFooter() {
+    return cy.get("footer");
   }
 
   verifyContactUs() {

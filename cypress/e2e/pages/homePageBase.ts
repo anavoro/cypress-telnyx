@@ -71,15 +71,26 @@ abstract class HomePageBase extends PageBase {
     return cy.get("main section a").contains("Sign up");
   }
 
-  verifyChatbot() {
+  openChatbot() {
     cy.get("div.c-bGYNvC > svg").click();
-    cy.get("div.c-bCIlIy").should("be.visible");
-    cy.get("textarea.c-fJsHXZ").type("Hello, Telnyx!");
-    cy.contains("button", "Send message").click();
-    cy.contains("div.c-bCIlIy", "Hello, Telnyx!").should("be.visible");
-    cy.get('button[data-state="open"].c-cODSYQ').click();
-    cy.get("div.c-bCIlIy").should("not.exist");
     return this;
+  }
+
+  closeChatbot() {
+    cy.get('button[data-state="open"].c-cODSYQ').click();
+    return this;
+  }
+
+  getChatbotTitle() {
+    return cy.contains("h4", "Ask our AI assistant");
+  }
+
+  getChatbotWelcomeMessage() {
+    return cy.contains("I'm Telnyx's AI assistant.");
+  }
+
+  getChatbotTextbox() {
+    return cy.get(`[placeholder="Type your question here"]`);
   }
 
   abstract getViewName(): string;

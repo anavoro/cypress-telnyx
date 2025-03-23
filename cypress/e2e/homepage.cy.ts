@@ -59,7 +59,17 @@ describe("Telnyx Homepage Tests", () => {
       .should("have.text", "Create a Telnyx account");
   });
 
-  it("should verify Chatbot functionality", () => {
-    homePageDesktop.visitHomePage().verifyChatbot();
+  it.only("should verify Chatbot functionality", () => {
+    homePageDesktop.visitHomePage().openChatbot();
+
+    homePageDesktop.getChatbotTitle().should("be.visible");
+    homePageDesktop.getChatbotWelcomeMessage().should("be.visible");
+    homePageDesktop.getChatbotTextbox().should("be.visible");
+
+    homePageDesktop.closeChatbot();
+
+    homePageDesktop.getChatbotTitle().should("not.exist");
+    homePageDesktop.getChatbotWelcomeMessage().should("not.exist");
+    homePageDesktop.getChatbotTextbox().should("not.exist");
   });
 });

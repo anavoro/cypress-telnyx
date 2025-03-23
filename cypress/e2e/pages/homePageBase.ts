@@ -55,32 +55,20 @@ abstract class HomePageBase extends PageBase {
   }
 
   goToContactUs() {
-    cy.get('a[href="/contact-us"].c-bzrwjc').click();
+    this.getSignUpButtonInHeroSection()
+      .parent()
+      .siblings("a")
+      .contains("Contact us")
+      .click();
     return this;
   }
 
-  verifySignUpPage() {
-    cy.url().should("eq", "https://telnyx.com/sign-up");
-    cy.get("h1.c-PJLV.c-rMlRu.c-frvnKx")
-      .should("be.visible")
-      .and("have.text", "Create a Telnyx account");
-    return this;
+  getSignUpButtonInHeader() {
+    return cy.get("header a:not(#main-menu)").contains("Sign up");
   }
 
-  verifyHeaderSignUp() {
-    cy.get('div#main-menu > a.c-bzrwjc > span[data-content="Sign up"]').click({
-      force: true,
-    });
-    this.verifySignUpPage();
-    return this;
-  }
-
-  verifyMainBodySignUp() {
-    cy.get(
-      'div.c-cxTTUp > a[href="/sign-up"] > span[data-content="Sign up"]'
-    ).click();
-    this.verifySignUpPage();
-    return this;
+  getSignUpButtonInHeroSection() {
+    return cy.get("main section a").contains("Sign up");
   }
 
   verifyChatbot() {

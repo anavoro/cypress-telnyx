@@ -54,12 +54,8 @@ abstract class HomePageBase extends PageBase {
     return cy.get("footer");
   }
 
-  verifyContactUs() {
+  goToContactUs() {
     cy.get('a[href="/contact-us"].c-bzrwjc').click();
-    cy.url().should("eq", "https://telnyx.com/contact-us");
-    cy.get("h1.c-PJLV.c-rMlRu.c-hLiKYq")
-      .should("be.visible")
-      .and("have.text", "Talk to an expert");
     return this;
   }
 

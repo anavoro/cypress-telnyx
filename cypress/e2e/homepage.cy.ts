@@ -1,7 +1,9 @@
+import { ContactUsPage } from "./pages/contactUsPage";
 import HomePageDesktop from "./pages/homePageDesktop";
 
 describe("Telnyx Homepage Tests", () => {
   const homePageDesktop = new HomePageDesktop();
+  const contactUsPage = new ContactUsPage();
 
   it("should load the homepage and check the title", () => {
     homePageDesktop.visitHomePage({ timeout: 5 * 1000 });
@@ -9,7 +11,6 @@ describe("Telnyx Homepage Tests", () => {
     homePageDesktop
       .getHeroTitle()
       .should("have.text", "Experience AI-powered connectivity");
-
     homePageDesktop
       .getPageTitle()
       .should(
@@ -18,7 +19,7 @@ describe("Telnyx Homepage Tests", () => {
       );
   });
 
-  it.only("verify footer desktop", () => {
+  it("verify footer desktop", () => {
     homePageDesktop
       .visitHomePage()
       .getFooter()
@@ -27,7 +28,13 @@ describe("Telnyx Homepage Tests", () => {
   });
 
   it("should check the contact us form", () => {
-    homePageDesktop.visitHomePage().verifyContactUs();
+    homePageDesktop.visitHomePage().goToContactUs();
+
+    contactUsPage.getPageUrl().should("eq", "https://telnyx.com/contact-us");
+    contactUsPage
+      .getContactFormTitle()
+      .should("be.visible")
+      .should("have.text", "Talk to an expert");
   });
 
   it('should navigate to the sign-up page upon clicking "Sign up" in the header', () => {

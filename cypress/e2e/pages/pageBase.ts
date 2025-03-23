@@ -4,6 +4,10 @@ class PageBase {
     return this;
   }
 
+  getPageTitle() {
+    return cy.title();
+  }
+
   waitForPageLoad() {
     cy.get("body").should("be.visible");
     cy.url().should("not.be.empty");

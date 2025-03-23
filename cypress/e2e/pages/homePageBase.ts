@@ -26,9 +26,8 @@ abstract class HomePageBase extends PageBase {
     return this;
   }
 
-  verifyPageTitle() {
-    cy.title().should("include", "Telnyx");
-    return this;
+  getHeroTitle() {
+    return cy.get("main section h1");
   }
 
   verifyHomepageLoaded() {
@@ -102,8 +101,8 @@ abstract class HomePageBase extends PageBase {
   }
 
   abstract getViewName(): string;
-  abstract verifyMainNavigation(): void;
-  abstract verifyTopNavigationMenu(): void;
+  abstract verifyMainNavigation(): this;
+  abstract verifyTopNavigationMenu(): this;
 }
 
 export default HomePageBase;

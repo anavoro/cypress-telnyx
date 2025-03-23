@@ -4,10 +4,18 @@ describe("Telnyx Homepage Tests", () => {
   const homePageDesktop = new HomePageDesktop();
 
   it("should load the homepage and check the title", () => {
+    homePageDesktop.visitHomePage({ timeout: 5 * 1000 });
+
     homePageDesktop
-      .visitHomePage({ timeout: 5 * 1000 })
-      .verifyHomepageLoaded()
-      .verifyPageTitle();
+      .getHeroTitle()
+      .should("have.text", "Experience AI-powered connectivity");
+
+    homePageDesktop
+      .getPageTitle()
+      .should(
+        "equal",
+        "Telnyx - Global solutions for Communications, IOT, AI, Compute and Networking"
+      );
   });
 
   it("verify footer desktop", () => {

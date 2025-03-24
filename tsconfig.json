@@ -9,12 +9,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "types": ["node", "mocha"],  // Don't include "cypress" here
+    "types": ["node", "mocha"],  
     "baseUrl": "."
   },
   "include": [
     "**/*.ts",
-    "cypress.d.ts"  // Ensure custom Cypress type declarations are included
+    "cypress.d.ts"  
   ],
   "exclude": [
     "node_modules"

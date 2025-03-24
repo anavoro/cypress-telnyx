@@ -14,9 +14,8 @@ module.exports = defineConfig({
       inlineAssets: true,
     },
     setupNodeEvents(on, config) {
-      // Register the mochawesome reporter plugin
       require('cypress-mochawesome-reporter/plugin')(on);
-      // Add any other event listeners here
+      return config;
     },
     hideXHRInCommandLog: true,
   },

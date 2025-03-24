@@ -59,7 +59,7 @@ describe("Telnyx Homepage Tests", () => {
       .should("have.text", "Create a Telnyx account");
   });
 
-  it.only("should verify Chatbot functionality", () => {
+  it("should verify Chatbot functionality", () => {
     homePageDesktop.visitHomePage().openChatbot();
 
     homePageDesktop.getChatbotTitle().should("be.visible");

@@ -1,30 +1,18 @@
 import HomePageBase from "./homePageBase";
-
 class HomePageDesktop extends HomePageBase {
   constructor() {
     super();
   }
 
-  getViewName() {
-    return "Desktop";
+  openNavigation() {}
+  closeNavigation() {}
+
+  getPrimaryNavigationItems(): Cypress.Chainable {
+    return cy.get("#main-menu-content").find("a, button");
   }
 
-  getNavItem(text: string) {
-    return cy.contains("a, button, span", text);
-  }
-
-  verifyTopNavigationMenu(): this {
-    Object.values(this.topNavigationItems).forEach((item) => {
-      this.getNavItem(item).should("exist");
-    });
-    return this;
-  }
-
-  verifyMainNavigation(): this {
-    Object.values(this.navigationItems).forEach((item) => {
-      this.getNavItem(item).should("exist");
-    });
-    return this;
+  getSecondaryNavigationLinkByText(text: string): Cypress.Chainable {
+    return cy.contains("header a", text).should("be.visible");
   }
 }
 

@@ -1,14 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "dom"],
+    "target": "es6",
+    "lib": ["es6", "dom"],
     "sourceMap": true,
-    "types": ["cypress", "node", "mocha", "cypress-real-events"],
     "strict": true,
     "noImplicitAny": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "baseUrl": "https://telnyx.com"
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "types": ["node", "mocha"],  // Don't include "cypress" here
+    "baseUrl": "."
   },
-  "include": ["**/*.ts", "cypress/**/*.d.ts"]
+  "include": [
+    "**/*.ts",
+    "cypress.d.ts"  // Ensure custom Cypress type declarations are included
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

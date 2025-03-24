@@ -1,9 +1,9 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  projectId: 'e153fo',
+  projectId: "e153fo",
   e2e: {
-    baseUrl: 'https://telnyx.com',
+    baseUrl: "https://telnyx.com",
     experimentalStudio: true,
     reporter: 'cypress-mochawesome-reporter',
     video: false,
@@ -18,5 +18,6 @@ module.exports = defineConfig({
       require('cypress-mochawesome-reporter/plugin')(on);
       // Add any other event listeners here
     },
+    hideXHRInCommandLog: true,
   },
 });

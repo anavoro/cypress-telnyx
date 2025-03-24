@@ -1,3 +1,4 @@
+import { getCypressElementCoordinates } from "cypress-real-events/getCypressElementCoordinates";
 import PageBase from "./pageBase";
 
 abstract class HomePageBase extends PageBase {
@@ -5,26 +6,19 @@ abstract class HomePageBase extends PageBase {
     super();
   }
 
-  protected navigationItems = {
-    products: "Products",
-    solutions: "Solutions",
-    pricing: "Pricing",
-    whyTelnyx: "Why Telnyx",
-    resources: "Resources",
-    developers: "Developers",
-  };
-
-  protected topNavigationItems = {
-    seti: "SETI",
-    shop: "Shop",
-    contactUs: "Contact us",
-    logIn: "Log in",
-  };
-
   visitHomePage(options?: Partial<Cypress.VisitOptions>) {
     cy.visit("/", options);
     return this;
   }
+
+  abstract openNavigation(): void;
+  abstract closeNavigation(): void;
+
+  getPrimaryNavigationItems() {
+    return cy.get("#main-menu-content").find("a, button");
+  }
+
+  abstract getSecondaryNavigationLinkByText(text: string): any;
 
   getHeroTitle() {
     return cy.get("main section h1");
@@ -40,14 +34,6 @@ abstract class HomePageBase extends PageBase {
       cy.wrap(response.duration).should("be.lessThan", 5000);
     });
     return this;
-  }
-
-  getNavigationItems() {
-    return this.navigationItems;
-  }
-
-  getTopNavigationItems() {
-    return this.topNavigationItems;
   }
 
   getFooter() {
@@ -92,10 +78,6 @@ abstract class HomePageBase extends PageBase {
   getChatbotTextbox() {
     return cy.get(`[placeholder="Type your question here"]`);
   }
-
-  abstract getViewName(): string;
-  abstract verifyMainNavigation(): this;
-  abstract verifyTopNavigationMenu(): this;
 }
 
 export default HomePageBase;

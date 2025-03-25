@@ -26,8 +26,6 @@ npm run test:ui
 
 ## Test Cases
 
-## Test Cases
-
 | Test Case ID | Name                                                | Description                                                                                      |
 | ------------ | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | TEL-TC-001   | Homepage Loads Successfully                         | _Verify that the Telnyx homepage loads without errors and displays correctly._                   |
